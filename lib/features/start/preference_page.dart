@@ -77,7 +77,6 @@ class PreferencePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// 🔹 청소 스타일
               Text(
                 "청소 스타일",
                 style: TextStyle(fontSize: 42.w, fontWeight: FontWeight.w600),

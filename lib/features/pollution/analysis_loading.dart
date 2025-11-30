@@ -1,0 +1,192 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
+class LoadingPage extends StatefulWidget {
+  const LoadingPage({super.key});
+
+  @override
+  State<LoadingPage> createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> {
+  File? _selectedImage;
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        _selectedImage = File(image.path);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+
+      appBar: AppBar(
+        toolbarHeight: 120.h,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        leading: Row(
+          children: [
+            SizedBox(width: 10.w),
+            Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            SizedBox(width: 10.w),
+          ],
+        ),
+        title: Text(
+          "오염 분석",
+          style: TextStyle(
+            fontSize: 42.w,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 20.w),
+            child: Icon(Icons.person, size: 60.w, color: Colors.black87),
+          ),
+        ],
+      ),
+
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 40.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 30),
+
+              Text(
+                "오염분석",
+                style: TextStyle(fontSize: 40.w, fontWeight: FontWeight.w700),
+              ),
+
+              SizedBox(height: 20),
+
+              Text(
+                "• 사진을 업로드하면 오염을 자동으로 분석해드릴게요.\n"
+                "• 오염이 심한 부분을 촬영해서 올려주세요.",
+                style: TextStyle(fontSize: 28.w, color: Colors.grey),
+              ),
+
+              SizedBox(height: 50.h),
+
+              GestureDetector(
+                onTap: _pickImage,
+                child: Container(
+                  width: double.infinity,
+                  height: 450.h,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF2F2F2),
+                    borderRadius: BorderRadius.circular(30.r),
+                    border: Border.all(
+                      color: const Color(0xFFD4D4D4),
+                      width: 3,
+                    ),
+                  ),
+                  child:
+                      _selectedImage == null
+                          ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.upload,
+                                size: 80.w,
+                                color: Colors.grey,
+                              ),
+                              SizedBox(height: 20.h),
+                              Text(
+                                "사진을 업로드해주세요",
+                                style: TextStyle(
+                                  fontSize: 32.w,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          )
+                          : ClipRRect(
+                            borderRadius: BorderRadius.circular(30.r),
+                            child: Image.file(
+                              _selectedImage!,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                ),
+              ),
+
+              SizedBox(height: 40.h),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 300.w,
+                    height: 150.h,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFF939393), width: 1),
+                      borderRadius: BorderRadius.circular(30.r),
+                    ),
+                    child: Text(
+                      "분석",
+                      style: TextStyle(
+                        fontSize: 36.w,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF939393),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 50.h),
+
+              Center(
+                child: Text(
+                  "분석 중...",
+                  style: TextStyle(
+                    fontSize: 34.w,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 120.h),
+            ],
+          ),
+        ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 2,
+        iconSize: 60.w,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "검색"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: "스케줄",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart_rounded),
+            label: "분석",
+          ),
+        ],
+      ),
+    );
+  }
+}

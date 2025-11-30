@@ -41,7 +41,6 @@ class HomeMainPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            /// 상단 일정 박스
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.w),
               child: Container(
@@ -77,11 +76,9 @@ class HomeMainPage extends StatelessWidget {
 
             SizedBox(height: 60.h),
 
-            /// 배경 이미지 + 메뉴 버튼 Stack
             Stack(
               alignment: Alignment.center,
               children: [
-                /// Background image
                 Container(
                   width: 786.w,
                   height: 1179.h,
@@ -90,8 +87,6 @@ class HomeMainPage extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-
-                /// 왼쪽 상단 버튼: 공간 검색
                 Positioned(
                   top: 80.h,
                   left: 50.w,
@@ -102,8 +97,6 @@ class HomeMainPage extends StatelessWidget {
                     iconColor: Color(0xFF939393),
                   ),
                 ),
-
-                /// 오른쪽 상단 버튼: 분석
                 Positioned(
                   top: 80.h,
                   right: 50.w,
@@ -114,8 +107,6 @@ class HomeMainPage extends StatelessWidget {
                     iconColor: Color(0xFF939393),
                   ),
                 ),
-
-                /// 왼쪽 하단 버튼: 스케줄
                 Positioned(
                   bottom: 10.h,
                   left: 50.w,
@@ -136,7 +127,6 @@ class HomeMainPage extends StatelessWidget {
     );
   }
 
-  /// 버튼 위젯
   Widget _menuButton({
     required String title,
     required Color color,

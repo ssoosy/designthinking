@@ -56,7 +56,6 @@ class _LevelPageState extends State<LevelPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// 프로필 + 수정 버튼
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -96,7 +95,6 @@ class _LevelPageState extends State<LevelPage> {
 
               SizedBox(height: 40.h),
 
-              /// 점수 + 승급 텍스트(오른쪽)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -115,7 +113,6 @@ class _LevelPageState extends State<LevelPage> {
               ),
               SizedBox(height: 20.h),
 
-              /// Progress Bar
               Container(
                 width: double.infinity,
                 height: 80.h,
@@ -137,13 +134,10 @@ class _LevelPageState extends State<LevelPage> {
 
               SizedBox(height: 50.h),
 
-              /// 캘린더 박스
               _calendarBox(),
 
               SizedBox(height: 50.h),
 
-              /// 자취 레벨 등급 박스
-              /// 자취 레벨 등급 박스
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(40.w),
@@ -165,11 +159,10 @@ class _LevelPageState extends State<LevelPage> {
 
                     SizedBox(height: 15.h),
 
-                    /// 자취 새내기 타이틀
                     _levelBar(
                       "자취 새내기",
-                      0.1, // 새내기 시작 비율
-                      Color(0xFF939393), // 연한 회색
+                      0.1,
+                      Color(0xFF939393),
                       "assets/images/baby.png",
                     ),
 
@@ -208,8 +201,6 @@ class _LevelPageState extends State<LevelPage> {
           ),
         ),
       ),
-
-      /// 하단 네비게이션
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -231,7 +222,6 @@ class _LevelPageState extends State<LevelPage> {
     );
   }
 
-  /// ✅ 캘린더 박스 (2주 + 파란/주황 동그라미)
   Widget _calendarBox() {
     return Container(
       width: double.infinity,
@@ -244,7 +234,6 @@ class _LevelPageState extends State<LevelPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// 범례
           Row(
             children: [
               Icon(Icons.circle, color: Colors.blue, size: 26.w),
@@ -263,7 +252,6 @@ class _LevelPageState extends State<LevelPage> {
 
           SizedBox(height: 30.h),
 
-          /// 1주차 날짜
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
@@ -281,7 +269,6 @@ class _LevelPageState extends State<LevelPage> {
 
           SizedBox(height: 16.h),
 
-          /// 1주차 기록
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -297,7 +284,6 @@ class _LevelPageState extends State<LevelPage> {
 
           SizedBox(height: 24.h),
 
-          /// 2주차 날짜
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
@@ -315,7 +301,6 @@ class _LevelPageState extends State<LevelPage> {
 
           SizedBox(height: 16.h),
 
-          /// 2주차 기록
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -341,7 +326,6 @@ class _LevelPageState extends State<LevelPage> {
     );
   }
 
-  /// 성공(파란/주황 동그라미)
   Widget _calendarCellCircle(Color color) {
     return Container(
       width: 80.w,
@@ -354,7 +338,6 @@ class _LevelPageState extends State<LevelPage> {
     );
   }
 
-  /// 실패(X)
   Widget _calendarCellCross() {
     return Container(
       width: 80.w,
@@ -367,14 +350,12 @@ class _LevelPageState extends State<LevelPage> {
     );
   }
 
-  /// 레벨 바 (폭 넓게 + 오른쪽 아이콘)
   Widget _levelBar(String title, double value, Color color, String imgPath) {
     return Padding(
       padding: EdgeInsets.only(bottom: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// 레벨 이름 + 캐릭터 이미지
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -392,7 +373,6 @@ class _LevelPageState extends State<LevelPage> {
 
           SizedBox(height: 12.h),
 
-          /// Progress bar
           Stack(
             children: [
               Container(

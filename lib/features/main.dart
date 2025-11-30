@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'pollution/analysis_page.dart';
+import 'pollution/analysis_loading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: const AnalysisPage(),   // ← 실행 시 AnalysisPage 바로 오픈
+          home: const LoadingPage(),   // ← 실행 시 AnalysisPage 바로 오픈
         );
       },
     );
