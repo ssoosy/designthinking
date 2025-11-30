@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'level/level_page.dart'; // 경로 주의
+import 'pollution/analysis_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,18 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1080, 2400), // 너가 사용하던 기준 사이즈
+      designSize: const Size(1080, 2400), // 너가 사용하는 기준 사이즈
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "CleanMate",
-          theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
-            fontFamily: "Segoe UI",
-            useMaterial3: false,
-          ),
-          home: const LevelPage(), // 첫 화면 지정
+          home: const AnalysisPage(),   // ← 실행 시 AnalysisPage 바로 오픈
         );
       },
     );
