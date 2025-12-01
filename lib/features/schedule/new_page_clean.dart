@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NewPage extends StatefulWidget {
-  const NewPage({super.key});
+class NewPageClean extends StatefulWidget {
+  const NewPageClean({super.key});
 
   @override
-  State<NewPage> createState() => _NewPageState();
+  State<NewPageClean> createState() => _NewPageCleanState();
 }
 
-class _NewPageState extends State<NewPage> {
+class _NewPageCleanState extends State<NewPageClean> {
   String selectedMainTab = "청소";
 
   bool c1 = false;
