@@ -1,4 +1,7 @@
+import 'package:design_thinking/features/search/clean_category.dart';
+import 'package:design_thinking/features/search/pot_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class KitchenCategory extends StatelessWidget {
@@ -17,10 +20,14 @@ class KitchenCategory extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CleanCategory()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -34,7 +41,15 @@ class KitchenCategory extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -100,15 +115,15 @@ class KitchenCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("냄비 탄 자국"),
+                  _categoryButton("냄비 탄 자국", context, PotDetail()),
                   SizedBox(height: 130.h),
-                  _categoryButton("프라이팬 기름때 제거"),
+                  _categoryButton("프라이팬 기름때 제거", context, KitchenCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("전자레인지 내부 청소"),
+                  _categoryButton("전자레인지 내부 청소", context, KitchenCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("도마 냄새 제거"),
+                  _categoryButton("도마 냄새 제거", context, KitchenCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("가스레인지 기름때 제거"),
+                  _categoryButton("가스레인지 기름때 제거", context, KitchenCategory()),
 
                   SizedBox(height: 200.h),
                 ],
@@ -138,8 +153,14 @@ class KitchenCategory extends StatelessWidget {
     );
   }
 
-  Widget _categoryButton(String title) {
-    return Container(
+  Widget _categoryButton(String title, BuildContext context, Widget page) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },child: Container(
       width: double.infinity,
       height: 120.h,
       alignment: Alignment.center,
@@ -163,6 +184,7 @@ class KitchenCategory extends StatelessWidget {
           color: Color(0xFF939393),
         ),
       ),
+    )
     );
   }
 }

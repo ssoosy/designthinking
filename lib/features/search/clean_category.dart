@@ -1,3 +1,7 @@
+import 'package:design_thinking/features/level/level_page.dart';
+import 'package:design_thinking/features/search/floor_category.dart';
+import 'package:design_thinking/features/search/kitchen_category.dart';
+import 'package:design_thinking/features/search/search_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,10 +21,14 @@ class CleanCategory extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchInfo()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -34,7 +42,15 @@ class CleanCategory extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LevelPage()),
+                );
+              },
+              child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -100,15 +116,15 @@ class CleanCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("주방"),
+                  _categoryButton("주방", context, const KitchenCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("바닥/바닥청소"),
+                  _categoryButton("바닥/바닥청소", context, const FloorCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("욕실"),
+                  _categoryButton("욕실", context, const CleanCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("벽/벽지"),
+                  _categoryButton("벽/벽지", context, const CleanCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("기타 청소 영역"),
+                  _categoryButton("기타 청소 영역", context, const CleanCategory()),
 
                   SizedBox(height: 200.h),
                 ],
@@ -138,31 +154,38 @@ class CleanCategory extends StatelessWidget {
     );
   }
 
-  Widget _categoryButton(String title) {
-    return Container(
-      width: double.infinity,
-      height: 120.h,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30.r),
-        border: Border.all(color: Colors.grey, width: 3.w),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFF939393),
-            blurRadius: 10.r,
-            offset: Offset(2.w, 4.h),
-          ),
-        ],
-      ),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 42.sp,
-          fontWeight: FontWeight.w400,
-          color: Color(0xFF939393),
+  Widget _categoryButton(String title, BuildContext context, Widget page) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },child: Container(
+        width: double.infinity,
+        height: 120.h,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.r),
+          border: Border.all(color: Colors.grey, width: 3.w),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFF939393),
+              blurRadius: 10.r,
+              offset: Offset(2.w, 4.h),
+            ),
+          ],
         ),
-      ),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 42.sp,
+            fontWeight: FontWeight.w400,
+            color: Color(0xFF939393),
+          ),
+        ),
+      )
     );
   }
 }

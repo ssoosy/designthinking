@@ -1,5 +1,8 @@
+import 'package:design_thinking/features/search/laundry_category.dart';
+import 'package:design_thinking/features/search/sweat_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 
 class SmellCategory extends StatelessWidget {
   const SmellCategory({super.key});
@@ -17,10 +20,14 @@ class SmellCategory extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LaundryCategory()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -34,7 +41,15 @@ class SmellCategory extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -99,15 +114,15 @@ class SmellCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("땀 냄새 제거"),
+                  _categoryButton("땀 냄새 제거", context, SweatDetail()),
                   SizedBox(height: 130.h),
-                  _categoryButton("음식 냄새 제거"),
+                  _categoryButton("음식 냄새 제거", context, SmellCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("세탁 냄새(곰팡이 냄새) 제거"),
+                  _categoryButton("세탁 냄새(곰팡이 냄새) 제거", context, SmellCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("운동복 냄새 제거"),
+                  _categoryButton("운동복 냄새 제거", context, SmellCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("수건 냄새 제거"),
+                  _categoryButton("수건 냄새 제거", context, SmellCategory()),
 
                   SizedBox(height: 200.h),
                 ],
@@ -137,8 +152,14 @@ class SmellCategory extends StatelessWidget {
     );
   }
 
-  Widget _categoryButton(String title) {
-    return Container(
+  Widget _categoryButton(String title, BuildContext context, Widget page) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },child: Container(
       width: double.infinity,
       height: 120.h,
       alignment: Alignment.center,
@@ -162,6 +183,7 @@ class SmellCategory extends StatelessWidget {
           color: Color(0xFF939393),
         ),
       ),
+    )
     );
   }
 }
