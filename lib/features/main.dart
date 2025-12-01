@@ -7,7 +7,7 @@ import 'package:design_thinking/features/search/floor_category.dart';
 import 'package:design_thinking/features/search/kitchen_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'search/search_info.dart';
+import 'search/remove_category.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cleaning Info',
-          home: const SearchInfo(),
+          home: const RemoveCategory(),
         );
       },
     );

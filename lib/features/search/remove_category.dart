@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SearchInfo extends StatelessWidget {
-  const SearchInfo({super.key});
+class RemoveCategory extends StatelessWidget {
+  const RemoveCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,6 @@ class SearchInfo extends StatelessWidget {
 
       body: Stack(
         children: [
-          /// ⭐ 배경 이미지
           Positioned.fill(
             top: 700.h,
             child: Align(
@@ -54,16 +53,15 @@ class SearchInfo extends StatelessWidget {
             ),
           ),
 
-          /// UI 영역
           SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 300.h),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 50.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 300.h),
 
-                /// 검색바
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
+                  Row(
                     children: [
                       Expanded(
                         child: Container(
@@ -87,37 +85,34 @@ class SearchInfo extends StatelessWidget {
                       Icon(Icons.search, size: 40, color: Colors.blue),
                     ],
                   ),
-                ),
 
-                SizedBox(height: 60),
+                  SizedBox(height: 80.h),
 
-                Text(
-                  "찾고 싶은 정보\n카테고리를 선택해주세요.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
-                ),
-
-                SizedBox(height: 90),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _menuButton(
-                      "청소",
-                      Color(0xFF76C0FF),
-                      "assets/images/sweep.png",
+                  /// 제목
+                  Text(
+                    "얼룩 제거",
+                    style: TextStyle(
+                      fontSize: 90.sp,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
                     ),
-                    SizedBox(width: 20),
-                    _menuButton(
-                      "빨래",
-                      Color(0xFFFFB36F),
-                      "assets/images/laundry.png",
-                    ),
-                  ],
-                ),
+                  ),
 
-                SizedBox(height: 280),
-              ],
+                  SizedBox(height: 167.h),
+
+                  _categoryButton("김치 얼룩 제거"),
+                  SizedBox(height: 130.h),
+                  _categoryButton("핏자국"),
+                  SizedBox(height: 130.h),
+                  _categoryButton("커피 얼룩"),
+                  SizedBox(height: 130.h),
+                  _categoryButton("볼펜/잉크 얼룩"),
+                  SizedBox(height: 130.h),
+                  _categoryButton("흙·먼지 얼룩"),
+
+                  SizedBox(height: 200.h),
+                ],
+              ),
             ),
           ),
         ],
@@ -125,7 +120,7 @@ class SearchInfo extends StatelessWidget {
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
-        iconSize: 60.w,
+        iconSize: 70.w,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         items: const [
@@ -143,32 +138,30 @@ class SearchInfo extends StatelessWidget {
     );
   }
 
-  Widget _menuButton(String title, Color color, String imagePath) {
+  Widget _categoryButton(String title) {
     return Container(
-      width: 330.w,
-      height: 330.h,
+      width: double.infinity,
+      height: 120.h,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            imagePath,
-            width: 200.w,
-            height: 300.h,
-            fit: BoxFit.contain,
-          ),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 60.w,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-            ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30.r),
+        border: Border.all(color: Colors.grey, width: 3.w),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xFF939393),
+            blurRadius: 10.r,
+            offset: Offset(2.w, 4.h),
           ),
         ],
+      ),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 42.sp,
+          fontWeight: FontWeight.w400,
+          color: Color(0xFF939393),
+        ),
       ),
     );
   }
