@@ -1,3 +1,7 @@
+import 'package:design_thinking/features/main/home_main.dart';
+import 'package:design_thinking/features/pollution/analysis_page.dart';
+import 'package:design_thinking/features/search/search_info.dart';
+import 'package:design_thinking/features/start/userinfopage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +19,24 @@ class _LevelPageState extends State<LevelPage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if (_selectedIndex == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SearchInfo()),
+        );
+      }
+      else if (_selectedIndex == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const LevelPage()),
+        );
+      }
+      else if (_selectedIndex == 2) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AnalysisPage()),
+        );
+      }
     });
   }
 
@@ -31,7 +53,15 @@ class _LevelPageState extends State<LevelPage> {
         leading: Row(
           children: [
             SizedBox(width: 10.w),
-            Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeMainPage()),
+                );
+              },
+              child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            ),
             SizedBox(width: 10.w),
           ],
         ),
@@ -77,20 +107,28 @@ class _LevelPageState extends State<LevelPage> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 40.w,
-                      vertical: 18.h,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const UserInfoPage()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 40.w,
+                        vertical: 18.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.r),
+                        border: Border.all(color: Colors.grey, width: 2),
+                      ),
+                      child: Text(
+                        "내 정보 수정하기",
+                        style: TextStyle(fontSize: 32.w, color: Colors.black),
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.r),
-                      border: Border.all(color: Colors.grey, width: 2),
-                    ),
-                    child: Text(
-                      "내 정보 수정하기",
-                      style: TextStyle(fontSize: 32.w, color: Colors.black),
-                    ),
-                  ),
+                  )
                 ],
               ),
 

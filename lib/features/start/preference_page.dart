@@ -223,7 +223,12 @@ class _PreferencePageState extends State<PreferencePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomeMainPage()),
+                      );
+                    },
                     child: Container(
                       width: 336.w,
                       height: 120.h,
@@ -238,13 +243,6 @@ class _PreferencePageState extends State<PreferencePage> {
                         ),
                       ),
                       child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const HomeMainPage()),
-                            );
-                          },
                           child: Text(
                             "완료",
                             style: TextStyle(
@@ -254,7 +252,6 @@ class _PreferencePageState extends State<PreferencePage> {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                        )
                       ),
                     ),
                   ),
