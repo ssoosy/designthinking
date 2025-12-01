@@ -5,10 +5,10 @@ class BathroomClean extends StatefulWidget {
   const BathroomClean({super.key});
 
   @override
-  State<BathroomClean> createState() => _ScheduleDetailPageState();
+  State<BathroomClean> createState() => _BathroomCleanState();
 }
 
-class _ScheduleDetailPageState extends State<BathroomClean> {
+class _BathroomCleanState extends State<BathroomClean> {
   bool isSuccess = false;
   bool isFail = false;
 
