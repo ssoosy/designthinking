@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import './new_page_laundry.dart';
+import './new_page_clean.dart';
 
-class NewPageClean extends StatefulWidget {
-  const NewPageClean({super.key});
+class NewPageLaundry extends StatefulWidget {
+  const NewPageLaundry({super.key});
 
   @override
-  State<NewPageClean> createState() => _NewPageCleanState();
+  State<NewPageLaundry> createState() => _NewPageLaundryState();
 }
 
-class _NewPageCleanState extends State<NewPageClean> {
-  String selectedMainTab = "청소";
+class _NewPageLaundryState extends State<NewPageLaundry> {
+  String selectedMainTab = "빨래";
 
   bool c1 = false;
   bool c2 = false;
@@ -88,7 +88,7 @@ class _NewPageCleanState extends State<NewPageClean> {
                       children: [
                         Expanded(
                           child: _rowCheck(
-                            "바닥 청소",
+                            "침구류 빨래",
                             c1,
                             (v) => setState(() => c1 = v!),
                           ),
@@ -96,7 +96,7 @@ class _NewPageCleanState extends State<NewPageClean> {
                         SizedBox(width: 20.w),
                         Expanded(
                           child: _rowCheck(
-                            "욕실 청소",
+                            "베개 커버 빨래",
                             c2,
                             (v) => setState(() => c2 = v!),
                           ),
@@ -108,7 +108,7 @@ class _NewPageCleanState extends State<NewPageClean> {
                       children: [
                         Expanded(
                           child: _rowCheck(
-                            "물걸레질",
+                            "러그 빨래",
                             c3,
                             (v) => setState(() => c3 = v!),
                           ),
@@ -116,7 +116,7 @@ class _NewPageCleanState extends State<NewPageClean> {
                         SizedBox(width: 20.w),
                         Expanded(
                           child: _rowCheck(
-                            "분리수거",
+                            "의류 빨래",
                             c4,
                             (v) => setState(() => c4 = v!),
                           ),
@@ -231,10 +231,10 @@ class _NewPageCleanState extends State<NewPageClean> {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          if (txt == "빨래") {
+          if (txt == "청소") {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (_) => const NewPageLaundry()),
+              MaterialPageRoute(builder: (_) => const NewPageClean()),
             );
           } else {
             setState(() => selectedMainTab = txt);
