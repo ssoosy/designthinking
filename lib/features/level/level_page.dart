@@ -1,5 +1,6 @@
 import 'package:design_thinking/features/main/home_main.dart';
 import 'package:design_thinking/features/pollution/analysis_page.dart';
+import 'package:design_thinking/features/schedule/calender_page.dart';
 import 'package:design_thinking/features/search/search_info.dart';
 import 'package:design_thinking/features/start/userinfopage.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _LevelPageState extends State<LevelPage> {
       else if (_selectedIndex == 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const LevelPage()),
+          MaterialPageRoute(builder: (context) => const CalenderPage()),
         );
       }
       else if (_selectedIndex == 2) {

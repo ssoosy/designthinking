@@ -1,3 +1,5 @@
+import 'package:design_thinking/features/schedule/calender_page.dart';
+import 'package:design_thinking/features/schedule/new_page_clean.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +31,15 @@ class _BathroomCleanState extends State<BathroomClean> {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(Icons.close, size: 70.w, color: Colors.black),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CalenderPage()),
+              );
+            },
+            child: Icon(Icons.close, size: 70.w, color: Colors.black),
+          ),
         ),
         title: Text(
           "Text",
@@ -38,9 +48,17 @@ class _BathroomCleanState extends State<BathroomClean> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Text(
-              "편집",
-              style: TextStyle(fontSize: 48.sp, color: Colors.black),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const NewPageClean()),
+                );
+              },
+              child: Text(
+                "편집",
+                style: TextStyle(fontSize: 48.sp, color: Colors.black),
+              )
             ),
           ),
         ],

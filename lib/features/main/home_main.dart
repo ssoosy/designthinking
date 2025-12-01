@@ -1,5 +1,6 @@
 import 'package:design_thinking/features/level/level_page.dart';
 import 'package:design_thinking/features/pollution/analysis_page.dart';
+import 'package:design_thinking/features/schedule/calender_page.dart';
 import 'package:design_thinking/features/search/search_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -132,7 +133,7 @@ class HomeMainPage extends StatelessWidget {
                     icon: Icons.calendar_month_rounded,
                     iconColor: Color(0xFF939393),
                     context: context,
-                    page: const HomeMainPage(), //이거 스케쥴 관리로 바꿔야됨!!!
+                    page: const CalenderPage(),
                   ),
                 ),
               ],

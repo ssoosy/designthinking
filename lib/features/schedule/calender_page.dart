@@ -1,5 +1,9 @@
+import 'package:design_thinking/features/schedule/bathroom_clean.dart';
+import 'package:design_thinking/features/schedule/new_page_clean.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:design_thinking/features/main/home_main.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 
 class CalenderPage extends StatefulWidget {
   const CalenderPage({super.key});
@@ -23,10 +27,14 @@ class _CalenderPageState extends State<CalenderPage> {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeMainPage()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -40,7 +48,15 @@ class _CalenderPageState extends State<CalenderPage> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -50,11 +66,19 @@ class _CalenderPageState extends State<CalenderPage> {
           _calendarHeader(),
           _calendarGrid(),
           SizedBox(height: 40.h),
-          _scheduleCard(
-            "욕실 청소",
-            "11:00 AM",
-            "1:00 PM",
-            const Color(0xFF5CA9FF),
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BathroomClean()),
+                );
+              },
+              child: _scheduleCard(
+                "욕실 청소",
+                "11:00 AM",
+                "1:00 PM",
+                const Color(0xFF5CA9FF),
+              )
           ),
           SizedBox(height: 30.h),
           _scheduleCard(
@@ -281,18 +305,26 @@ class _CalenderPageState extends State<CalenderPage> {
     );
   }
   Widget _addButton() {
-    return Container(
-      width: 1000.w,
-      height: 150.h,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: const Color(0xFFF2F2F2),
-        borderRadius: BorderRadius.circular(40.r),
-      ),
-      child: Text(
-        "+",
-        style: TextStyle(fontSize: 60.sp, fontWeight: FontWeight.w500),
-      ),
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const NewPageClean()),
+          );
+        },
+      child: Container(
+        width: 1000.w,
+        height: 150.h,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: const Color(0xFFF2F2F2),
+          borderRadius: BorderRadius.circular(40.r),
+        ),
+        child: Text(
+          "+",
+          style: TextStyle(fontSize: 60.sp, fontWeight: FontWeight.w500),
+        ),
+      )
     );
   }
 }

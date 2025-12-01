@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cleaning Info',
-          home: const NewPageLaundry(),
+          home: const HomeMainPage(),
         );
       },
     );
