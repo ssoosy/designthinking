@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CleanCategory extends StatelessWidget {
-  const CleanCategory({super.key});
+class KitchenCategory extends StatelessWidget {
+  const KitchenCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@ class CleanCategory extends StatelessWidget {
 
                   /// 제목
                   Text(
-                    "청소",
+                    "주방",
                     style: TextStyle(
                       fontSize: 90.sp,
                       fontWeight: FontWeight.w700,
@@ -100,15 +100,15 @@ class CleanCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("주방"),
+                  _categoryButton("냄비 탄 자국"),
                   SizedBox(height: 130.h),
-                  _categoryButton("바닥/바닥청소"),
+                  _categoryButton("프라이팬 기름때 제거"),
                   SizedBox(height: 130.h),
-                  _categoryButton("욕실"),
+                  _categoryButton("전자레인지 내부 청소"),
                   SizedBox(height: 130.h),
-                  _categoryButton("벽/벽지"),
+                  _categoryButton("도마 냄새 제거"),
                   SizedBox(height: 130.h),
-                  _categoryButton("기타 청소 영역"),
+                  _categoryButton("가스레인지 기름때 제거"),
 
                   SizedBox(height: 200.h),
                 ],

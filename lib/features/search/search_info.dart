@@ -41,7 +41,6 @@ class SearchInfo extends StatelessWidget {
 
       body: Stack(
         children: [
-          /// 배경 이미지
           Positioned(
             top: 80,
             left: 0,
@@ -57,13 +56,11 @@ class SearchInfo extends StatelessWidget {
             ),
           ),
 
-          /// UI 내용
           SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: 60),
 
-                /// 검색바
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
@@ -126,7 +123,6 @@ class SearchInfo extends StatelessWidget {
         ],
       ),
 
-      /// 🟦 Bottom Navigation Bar 추가
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
         iconSize: 60.w,
@@ -147,7 +143,6 @@ class SearchInfo extends StatelessWidget {
     );
   }
 
-  /// 메뉴 버튼 위젯
   Widget _menuButton(String title, Color color, String imagePath) {
     return Container(
       width: 280.w,
