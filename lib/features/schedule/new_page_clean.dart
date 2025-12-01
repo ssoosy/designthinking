@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import './new_page_laundry.dart';
 
-class NewPage extends StatefulWidget {
-  const NewPage({super.key});
+class NewPageClean extends StatefulWidget {
+  const NewPageClean({super.key});
 
   @override
-  State<NewPage> createState() => _NewPageState();
+  State<NewPageClean> createState() => _NewPageCleanState();
 }
 
-class _NewPageState extends State<NewPage> {
+class _NewPageCleanState extends State<NewPageClean> {
   String selectedMainTab = "청소";
 
   bool c1 = false;
@@ -22,7 +23,6 @@ class _NewPageState extends State<NewPage> {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      /// -------------------- APPBAR --------------------
       appBar: AppBar(
         toolbarHeight: 200.h,
         backgroundColor: Colors.transparent,
@@ -57,7 +57,6 @@ class _NewPageState extends State<NewPage> {
         ],
       ),
 
-      /// -------------------- BODY --------------------
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -66,7 +65,6 @@ class _NewPageState extends State<NewPage> {
             children: [
               SizedBox(height: 30.h),
 
-              /// ----------------- MAIN TAB -----------------
               Container(
                 height: 120.h,
                 decoration: BoxDecoration(
@@ -78,7 +76,6 @@ class _NewPageState extends State<NewPage> {
 
               SizedBox(height: 40.h),
 
-              /// ----------------- SUB OPTION BOX -----------------
               Container(
                 padding: EdgeInsets.all(35.w),
                 decoration: BoxDecoration(
@@ -87,7 +84,6 @@ class _NewPageState extends State<NewPage> {
                 ),
                 child: Column(
                   children: [
-                    /// 2x2 체크박스 그리드
                     Row(
                       children: [
                         Expanded(
@@ -129,7 +125,6 @@ class _NewPageState extends State<NewPage> {
                     ),
                     SizedBox(height: 35.h),
 
-                    /// 기타 입력 + 체크박스
                     Row(
                       children: [
                         Checkbox(
@@ -168,7 +163,6 @@ class _NewPageState extends State<NewPage> {
 
               SizedBox(height: 40.h),
 
-              /// ----------------- TIME / ALERT / REPEAT -----------------
               Container(
                 padding: EdgeInsets.all(35.w),
                 decoration: BoxDecoration(
@@ -190,7 +184,6 @@ class _NewPageState extends State<NewPage> {
 
               SizedBox(height: 40.h),
 
-              /// ----------------- MEMO -----------------
               Container(
                 height: 423.h,
                 padding: EdgeInsets.all(30.w),
@@ -213,7 +206,6 @@ class _NewPageState extends State<NewPage> {
         ),
       ),
 
-      /// -------------------- FOOTER --------------------
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
         iconSize: 70.w,
@@ -234,12 +226,20 @@ class _NewPageState extends State<NewPage> {
     );
   }
 
-  /// -------------------- WIDGET REUSE --------------------
   Widget _mainTab(String txt) {
     bool isSelected = selectedMainTab == txt;
     return Expanded(
       child: GestureDetector(
-        onTap: () => setState(() => selectedMainTab = txt),
+        onTap: () {
+          if (txt == "빨래") {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const NewPageLaundry()),
+            );
+          } else {
+            setState(() => selectedMainTab = txt);
+          }
+        },
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
@@ -284,7 +284,6 @@ class _NewPageState extends State<NewPage> {
         ),
         SizedBox(width: 20.w),
 
-        /// 날짜
         Expanded(
           child: Container(
             height: 100.h,
@@ -305,7 +304,6 @@ class _NewPageState extends State<NewPage> {
         if (val2.isNotEmpty) ...[
           SizedBox(width: 20.w),
 
-          /// 시간
           Expanded(
             child: Container(
               height: 100.h,
