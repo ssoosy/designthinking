@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'search/water_detail.dart';
+import 'search/kimchi_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cleaning Info',
-          home: const WaterDetail(),
+          home: const KimchiDetail(),
         );
       },
     );

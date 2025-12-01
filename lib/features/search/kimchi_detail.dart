@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class WaterDetail extends StatelessWidget {
-  const WaterDetail({super.key});
+class KimchiDetail extends StatelessWidget {
+  const KimchiDetail({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class WaterDetail extends StatelessWidget {
               SizedBox(height: 80.h),
 
               Text(
-                "바닥 물 자국 제거",
+                "김치 얼룩 제거",
                 style: TextStyle(
                   fontSize: 80.sp,
                   fontWeight: FontWeight.w800,
@@ -59,26 +59,38 @@ class WaterDetail extends StatelessWidget {
               SizedBox(height: 80.h),
 
               Text(
-                "① 물자국은 ‘건조’가 핵심입니다",
+                "① 바로 닦아야 해요!",
                 style: TextStyle(fontSize: 48.sp, fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 30.h),
               Text(
-                "• 걸레가 너무 젖어 있으면 발자국 처럼 보입니다.\n"
-                "• 완전하게 짜낸 걸레로 다시 한 번 건조 후 닦아주세요.",
+                "• 키친타월로 가능한 한 빨리 닦아 물기 제거해 주세요\n"
+                "• 비비면 안돼요! (섬유 깊숙이 들어갈 수 있어요)",
                 style: TextStyle(fontSize: 38.sp, height: 1.7),
               ),
 
               SizedBox(height: 30.h),
 
               Text(
-                "② 식초를 물로 희석합니다 (1:30)",
+                "② 미온수 주방세제 이용하기",
                 style: TextStyle(fontSize: 48.sp, fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 30.h),
               Text(
-                "• 식초는 중화 작용으로 물때 제거가 가능합니다.\n"
-                "• 분사 후에 마른 걸레로 광을 내줍니다.",
+                "• 미지근한 물에 주방세제 1~2방울 넣어주세요.\n"
+                "• 10~15분 담근 뒤 손톱으로 살살 문질러주세요.",
+                style: TextStyle(fontSize: 38.sp, height: 1.7),
+              ),
+
+              SizedBox(height: 30.h),
+              Text(
+                "③ 미산소계 표백제 사용하기 (흰 옷만 가능!)",
+                style: TextStyle(fontSize: 48.sp, fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: 30.h),
+              Text(
+                "• 옥시크린 같은 산소계 표백제는 흰 옷에 사용 가능해요.\n"
+                "• 30분~1시간 담가두면 김치 기름이 분해돼요.",
                 style: TextStyle(fontSize: 38.sp, height: 1.7),
               ),
 
@@ -87,7 +99,7 @@ class WaterDetail extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(50.r),
                 child: Image.asset(
-                  "assets/images/water.png",
+                  "assets/images/kimchi.png",
                   width: double.infinity,
                   height: 700.h,
                   fit: BoxFit.cover,
