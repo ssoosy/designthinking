@@ -1,3 +1,10 @@
+import 'package:design_thinking/features/level/level_page.dart';
+import 'package:design_thinking/features/main/home_main.dart';
+import 'package:design_thinking/features/pollution/analysis_page.dart';
+import 'package:design_thinking/features/pollution/analysis_result.dart';
+import 'package:design_thinking/features/search/clean_category.dart';
+import 'package:design_thinking/features/search/floor_category.dart';
+import 'package:design_thinking/features/search/kitchen_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'search/search_info.dart';

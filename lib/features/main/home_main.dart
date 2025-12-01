@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeMainPage extends StatelessWidget {
   const HomeMainPage({super.key});
@@ -15,8 +16,8 @@ class HomeMainPage extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 20.w),
-          child: Image.asset(
-            "assets/images/icon2.png",
+          child: SvgPicture.asset(
+            "assets/icons/icon2.svg",
             width: 60.w,
             height: 60.w,
             fit: BoxFit.contain,
