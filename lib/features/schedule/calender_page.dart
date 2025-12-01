@@ -5,10 +5,10 @@ class CalenderPage extends StatefulWidget {
   const CalenderPage({super.key});
 
   @override
-  State<CalenderPage> createState() => _SchedulePageState();
+  State<CalenderPage> createState() => _CalenderPageState();
 }
 
-class _SchedulePageState extends State<CalenderPage> {
+class _CalenderPageState extends State<CalenderPage> {
   int selectedDate = 21;
 
   @override
@@ -16,7 +16,6 @@ class _SchedulePageState extends State<CalenderPage> {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      /// APPBAR
       appBar: AppBar(
         toolbarHeight: 200.h,
         backgroundColor: Colors.transparent,
@@ -46,7 +45,6 @@ class _SchedulePageState extends State<CalenderPage> {
         ],
       ),
 
-      /// BODY
       body: Column(
         children: [
           _calendarHeader(),
@@ -70,7 +68,6 @@ class _SchedulePageState extends State<CalenderPage> {
         ],
       ),
 
-      /// FOOTER NAVIGATION
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
         iconSize: 70.w,
@@ -91,7 +88,6 @@ class _SchedulePageState extends State<CalenderPage> {
     );
   }
 
-  /// ------------ Calendar Header ----------------
   Widget _calendarHeader() {
     return Column(
       children: [
@@ -129,7 +125,6 @@ class _SchedulePageState extends State<CalenderPage> {
     );
   }
 
-  /// ------------ Calendar Grid ----------------
   Widget _calendarGrid() {
     List<int?> days = [
       26,
@@ -197,7 +192,6 @@ class _SchedulePageState extends State<CalenderPage> {
           return Stack(
             alignment: Alignment.center,
             children: [
-              /// 🔵 21–22 이어진 타원 (좌우 정렬)
               if (is21 || is22)
                 Positioned.fill(
                   child: Container(
@@ -211,7 +205,6 @@ class _SchedulePageState extends State<CalenderPage> {
                   ),
                 ),
 
-              /// 🟠/🔵 반반 (20일)
               if (isHalf)
                 Column(
                   children: [
@@ -238,7 +231,6 @@ class _SchedulePageState extends State<CalenderPage> {
                   ],
                 ),
 
-              /// 📅 날짜 글자
               Text(
                 "$day",
                 style: TextStyle(
@@ -254,7 +246,6 @@ class _SchedulePageState extends State<CalenderPage> {
     );
   }
 
-  /// ------------ Schedule Card ----------------
   Widget _scheduleCard(String title, String start, String end, Color color) {
     return Container(
       width: 1000.w,
@@ -289,8 +280,6 @@ class _SchedulePageState extends State<CalenderPage> {
       ),
     );
   }
-
-  /// ------------ Add Button ----------------
   Widget _addButton() {
     return Container(
       width: 1000.w,
