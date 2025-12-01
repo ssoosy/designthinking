@@ -1,5 +1,7 @@
+import 'package:design_thinking/features/pollution/analysis_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 
 class AnalysisResult extends StatelessWidget {
   const AnalysisResult({super.key});
@@ -17,7 +19,15 @@ class AnalysisResult extends StatelessWidget {
         leading: Row(
           children: [
             SizedBox(width: 10.w),
-            Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AnalysisPage()),
+                );
+              },
+              child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            ),
             SizedBox(width: 10.w),
           ],
         ),
@@ -32,7 +42,15 @@ class AnalysisResult extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
-            child: Icon(Icons.person, size: 60.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),

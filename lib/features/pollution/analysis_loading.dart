@@ -1,3 +1,4 @@
+import 'package:design_thinking/features/pollution/analysis_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,6 +24,23 @@ class _LoadingPageState extends State<LoadingPage> {
         _selectedImage = File(image.path);
       });
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _navigateToNextPage();
+  }
+
+  void _navigateToNextPage() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    if (!mounted) return;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const AnalysisResult()),
+    );
   }
 
   @override
