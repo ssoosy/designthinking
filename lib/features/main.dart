@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'search/remove_category.dart';
+import 'search/smell_category.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cleaning Info',
-          home: const RemoveCategory(),
+          home: const SmellCategory(),
         );
       },
     );
