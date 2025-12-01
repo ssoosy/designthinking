@@ -1,3 +1,4 @@
+import 'package:design_thinking/features/start/preference_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -136,15 +137,23 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       ),
                     ),
                     child: Center(
-                      child: Text(
-                        "완료",
-                        style: TextStyle(
-                          color: const Color(0xFF939393),
-                          fontSize: 20,
-                          fontFamily: 'Segoe UI',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const PreferencePage()),
+                            );
+                          },
+                          child: Text(
+                            "완료",
+                            style: TextStyle(
+                              color: const Color(0xFF0088FF),
+                              fontSize: 20,
+                              fontFamily: 'Segoe UI',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        )
                     ),
                   ),
                 ),

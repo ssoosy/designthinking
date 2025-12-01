@@ -5,6 +5,8 @@ import 'package:design_thinking/features/pollution/analysis_result.dart';
 import 'package:design_thinking/features/search/clean_category.dart';
 import 'package:design_thinking/features/search/floor_category.dart';
 import 'package:design_thinking/features/search/kitchen_category.dart';
+import 'package:design_thinking/features/start/preference_page.dart';
+import 'package:design_thinking/features/start/userinfopage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'search/remove_category.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cleaning Info',
-          home: const RemoveCategory(),
+          home: const PreferencePage(),
         );
       },
     );

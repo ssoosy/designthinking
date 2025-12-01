@@ -60,7 +60,6 @@ class RemoveCategory extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 300.h),
-
                   Row(
                     children: [
                       Expanded(

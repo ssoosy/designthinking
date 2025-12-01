@@ -1,3 +1,6 @@
+import 'package:design_thinking/features/level/level_page.dart';
+import 'package:design_thinking/features/pollution/analysis_page.dart';
+import 'package:design_thinking/features/search/search_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -34,7 +37,15 @@ class HomeMainPage extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
-            child: Icon(Icons.person, size: 60.w, color: Colors.black87),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LevelPage()),
+                );
+              },
+              child: Icon(Icons.person, size: 60.w, color: Colors.black87),
+            ),
           ),
         ],
       ),
@@ -96,6 +107,8 @@ class HomeMainPage extends StatelessWidget {
                     color: Color(0xFFB6DDFF),
                     icon: Icons.search,
                     iconColor: Color(0xFF939393),
+                    context: context,
+                    page: const SearchInfo(),
                   ),
                 ),
                 Positioned(
@@ -106,6 +119,8 @@ class HomeMainPage extends StatelessWidget {
                     color: Color(0xFFFFB36E),
                     icon: Icons.bar_chart_rounded,
                     iconColor: Color(0xFF939393),
+                    context: context,
+                    page: const AnalysisPage(),
                   ),
                 ),
                 Positioned(
@@ -116,6 +131,8 @@ class HomeMainPage extends StatelessWidget {
                     color: Color(0xFFFA9EFA),
                     icon: Icons.calendar_month_rounded,
                     iconColor: Color(0xFF939393),
+                    context: context,
+                    page: const HomeMainPage(), //이거 스케쥴 관리로 바꿔야됨!!!
                   ),
                 ),
               ],
@@ -133,28 +150,38 @@ class HomeMainPage extends StatelessWidget {
     required Color color,
     required IconData icon,
     required Color iconColor,
+    required BuildContext context,
+    required Widget page,
   }) {
-    return Container(
-      width: 330.w,
-      height: 400.h,
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.35),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 90.w, color: iconColor),
-          SizedBox(height: 20.h),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 36.w,
-              fontWeight: FontWeight.w600,
-              color: iconColor,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      child: Container(
+        width: 330.w,
+        height: 400.h,
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.35),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 90.w, color: iconColor),
+            SizedBox(height: 20.h),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 36.w,
+                fontWeight: FontWeight.w600,
+                color: iconColor,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
