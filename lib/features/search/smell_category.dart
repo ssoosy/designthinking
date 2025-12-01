@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RemoveCategory extends StatelessWidget {
-  const RemoveCategory({super.key});
+class SmellCategory extends StatelessWidget {
+  const SmellCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +60,7 @@ class RemoveCategory extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 300.h),
+
                   Row(
                     children: [
                       Expanded(
@@ -88,7 +89,7 @@ class RemoveCategory extends StatelessWidget {
                   SizedBox(height: 80.h),
 
                   Text(
-                    "얼룩 제거",
+                    "냄새 제거",
                     style: TextStyle(
                       fontSize: 90.sp,
                       fontWeight: FontWeight.w700,
@@ -98,15 +99,15 @@ class RemoveCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("김치 얼룩 제거"),
+                  _categoryButton("땀 냄새 제거"),
                   SizedBox(height: 130.h),
-                  _categoryButton("핏자국"),
+                  _categoryButton("음식 냄새 제거"),
                   SizedBox(height: 130.h),
-                  _categoryButton("커피 얼룩"),
+                  _categoryButton("세탁 냄새(곰팡이 냄새) 제거"),
                   SizedBox(height: 130.h),
-                  _categoryButton("볼펜/잉크 얼룩"),
+                  _categoryButton("운동복 냄새 제거"),
                   SizedBox(height: 130.h),
-                  _categoryButton("흙·먼지 얼룩"),
+                  _categoryButton("수건 냄새 제거"),
 
                   SizedBox(height: 200.h),
                 ],
