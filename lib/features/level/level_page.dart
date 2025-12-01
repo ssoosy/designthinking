@@ -1,5 +1,11 @@
+import 'package:design_thinking/features/main/home_main.dart';
+import 'package:design_thinking/features/pollution/analysis_page.dart';
+import 'package:design_thinking/features/schedule/calender_page.dart';
+import 'package:design_thinking/features/search/search_info.dart';
+import 'package:design_thinking/features/start/userinfopage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LevelPage extends StatefulWidget {
   const LevelPage({super.key});
@@ -14,6 +20,24 @@ class _LevelPageState extends State<LevelPage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if (_selectedIndex == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SearchInfo()),
+        );
+      }
+      else if (_selectedIndex == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CalenderPage()),
+        );
+      }
+      else if (_selectedIndex == 2) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AnalysisPage()),
+        );
+      }
     });
   }
 
@@ -30,7 +54,15 @@ class _LevelPageState extends State<LevelPage> {
         leading: Row(
           children: [
             SizedBox(width: 10.w),
-            Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeMainPage()),
+                );
+              },
+              child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            ),
             SizedBox(width: 10.w),
           ],
         ),
@@ -61,8 +93,8 @@ class _LevelPageState extends State<LevelPage> {
                 children: [
                   Row(
                     children: [
-                      Image.asset(
-                        "assets/images/expert.png",
+                      SvgPicture.asset(
+                        'assets/icons/expert.svg',
                         width: 110.w,
                         height: 110.w,
                       ),
@@ -76,20 +108,28 @@ class _LevelPageState extends State<LevelPage> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 40.w,
-                      vertical: 18.h,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const UserInfoPage()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 40.w,
+                        vertical: 18.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.r),
+                        border: Border.all(color: Colors.grey, width: 2),
+                      ),
+                      child: Text(
+                        "내 정보 수정하기",
+                        style: TextStyle(fontSize: 32.w, color: Colors.black),
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.r),
-                      border: Border.all(color: Colors.grey, width: 2),
-                    ),
-                    child: Text(
-                      "내 정보 수정하기",
-                      style: TextStyle(fontSize: 32.w, color: Colors.black),
-                    ),
-                  ),
+                  )
                 ],
               ),
 
@@ -163,7 +203,7 @@ class _LevelPageState extends State<LevelPage> {
                       "자취 새내기",
                       0.1,
                       Color(0xFF939393),
-                      "assets/images/baby.png",
+                      "assets/icons/baby.svg",
                     ),
 
                     SizedBox(height: 25.h),
@@ -172,25 +212,25 @@ class _LevelPageState extends State<LevelPage> {
                       "자취 초보",
                       0.4,
                       Color(0xA81F428E),
-                      "assets/images/beginner.png",
+                      "assets/icons/beginner.svg",
                     ),
                     _levelBar(
                       "자취 중수",
                       0.55,
                       Color(0xFF0088FF),
-                      "assets/images/pro.png",
+                      "assets/icons/pro.svg",
                     ),
                     _levelBar(
                       "자취 고수",
                       0.8,
                       Color(0xFF83C6FF),
-                      "assets/images/expert.png",
+                      "assets/icons/expert.svg",
                     ),
                     _levelBar(
                       "자취의 신",
                       0.9,
                       Color(0xFF2CE9FF),
-                      "assets/images/god.png",
+                      "assets/icons/god.svg",
                     ),
                   ],
                 ),
@@ -367,7 +407,7 @@ class _LevelPageState extends State<LevelPage> {
                   color: Colors.black,
                 ),
               ),
-              Image.asset(imgPath, width: 100.w, height: 100.w),
+              SvgPicture.asset(imgPath, width: 100.w, height: 100.w),
             ],
           ),
 

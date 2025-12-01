@@ -1,3 +1,7 @@
+import 'package:design_thinking/features/main/home_main.dart';
+import 'package:design_thinking/features/search/clean_category.dart';
+import 'package:design_thinking/features/search/laundry_category.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,11 +21,18 @@ class SearchInfo extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
-          ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeMainPage()),
+              );
+            },child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 60.w,
+              color: Colors.black,
+            ),
+          )
         ),
         title: Text(
           "정보 검색",
@@ -34,7 +45,15 @@ class SearchInfo extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LevelPage()),
+              );
+            },
+            child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -106,12 +125,16 @@ class SearchInfo extends StatelessWidget {
                       "청소",
                       Color(0xFF76C0FF),
                       "assets/images/sweep.png",
+                      context,
+                      const CleanCategory(),
                     ),
                     SizedBox(width: 20),
                     _menuButton(
                       "빨래",
                       Color(0xFFFFB36F),
                       "assets/images/laundry.png",
+                      context,
+                      const LaundryCategory(),
                     ),
                   ],
                 ),
@@ -143,32 +166,40 @@ class SearchInfo extends StatelessWidget {
     );
   }
 
-  Widget _menuButton(String title, Color color, String imagePath) {
-    return Container(
-      width: 330.w,
-      height: 330.h,
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            imagePath,
-            width: 200.w,
-            height: 300.h,
-            fit: BoxFit.contain,
-          ),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 60.w,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
+  Widget _menuButton(String title, Color color, String imagePath, BuildContext context, Widget page) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      child: Container(
+        width: 330.w,
+        height: 330.h,
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.asset(
+              imagePath,
+              width: 200.w,
+              height: 300.h,
+              fit: BoxFit.contain,
             ),
-          ),
-        ],
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 60.w,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

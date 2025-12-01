@@ -1,3 +1,4 @@
+import 'package:design_thinking/features/schedule/calender_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './new_page_laundry.dart';
@@ -30,7 +31,15 @@ class _NewPageCleanState extends State<NewPageClean> {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(Icons.close, size: 60.w, color: Colors.black),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CalenderPage()),
+                );
+              },
+              child: Icon(Icons.close, size: 60.w, color: Colors.black87)
+          ),
         ),
         title: Text(
           "신규",

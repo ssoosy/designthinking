@@ -1,5 +1,8 @@
+import 'package:design_thinking/features/search/kimchi_detail.dart';
+import 'package:design_thinking/features/search/laundry_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 
 class RemoveCategory extends StatelessWidget {
   const RemoveCategory({super.key});
@@ -17,10 +20,14 @@ class RemoveCategory extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LaundryCategory()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -34,7 +41,15 @@ class RemoveCategory extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -60,7 +75,6 @@ class RemoveCategory extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 300.h),
-
                   Row(
                     children: [
                       Expanded(
@@ -99,15 +113,15 @@ class RemoveCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("김치 얼룩 제거"),
+                  _categoryButton("김치 얼룩 제거", context, KimchiDetail()),
                   SizedBox(height: 130.h),
-                  _categoryButton("핏자국"),
+                  _categoryButton("핏자국", context, RemoveCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("커피 얼룩"),
+                  _categoryButton("커피 얼룩", context, RemoveCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("볼펜/잉크 얼룩"),
+                  _categoryButton("볼펜/잉크 얼룩", context, RemoveCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("흙·먼지 얼룩"),
+                  _categoryButton("흙·먼지 얼룩", context, RemoveCategory()),
 
                   SizedBox(height: 200.h),
                 ],
@@ -137,8 +151,14 @@ class RemoveCategory extends StatelessWidget {
     );
   }
 
-  Widget _categoryButton(String title) {
-    return Container(
+  Widget _categoryButton(String title, BuildContext context, Widget page) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },child: Container(
       width: double.infinity,
       height: 120.h,
       alignment: Alignment.center,
@@ -162,6 +182,7 @@ class RemoveCategory extends StatelessWidget {
           color: Color(0xFF939393),
         ),
       ),
+    )
     );
   }
 }

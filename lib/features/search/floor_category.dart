@@ -1,5 +1,9 @@
+import 'package:design_thinking/features/level/level_page.dart';
+import 'package:design_thinking/features/search/clean_category.dart';
+import 'package:design_thinking/features/search/water_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:design_thinking/features/search/search_info.dart';
 
 class FloorCategory extends StatelessWidget {
   const FloorCategory({super.key});
@@ -17,10 +21,14 @@ class FloorCategory extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CleanCategory()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -34,8 +42,16 @@ class FloorCategory extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
-          ),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LevelPage()),
+                );
+              },
+              child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            ),
+          )
         ],
       ),
 
@@ -100,15 +116,15 @@ class FloorCategory extends StatelessWidget {
 
                   SizedBox(height: 167.h),
 
-                  _categoryButton("바닥 물자국 제거"),
+                  _categoryButton("바닥 물자국 제거", context, WaterDetail()),
                   SizedBox(height: 130.h),
-                  _categoryButton("장판 얼룩 제거"),
+                  _categoryButton("장판 얼룩 제거", context, FloorCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("마룻바닥 스크래치 케어"),
+                  _categoryButton("마룻바닥 스크래치 케어", context, FloorCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("바닥 코팅 케어"),
+                  _categoryButton("바닥 코팅 케어", context, FloorCategory()),
                   SizedBox(height: 130.h),
-                  _categoryButton("바닥 먼지/머리카락 제거"),
+                  _categoryButton("바닥 먼지/머리카락 제거", context, FloorCategory()),
 
                   SizedBox(height: 200.h),
                 ],
@@ -138,8 +154,14 @@ class FloorCategory extends StatelessWidget {
     );
   }
 
-  Widget _categoryButton(String title) {
-    return Container(
+  Widget _categoryButton(String title, BuildContext context, Widget page) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },child: Container(
       width: double.infinity,
       height: 120.h,
       alignment: Alignment.center,
@@ -163,6 +185,7 @@ class FloorCategory extends StatelessWidget {
           color: Color(0xFF939393),
         ),
       ),
+    )
     );
   }
 }

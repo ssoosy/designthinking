@@ -1,5 +1,10 @@
+import 'package:design_thinking/features/search/clean_category.dart';
+import 'package:design_thinking/features/search/remove_category.dart';
+import 'package:design_thinking/features/search/smell_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:design_thinking/features/search/search_info.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 
 class LaundryCategory extends StatelessWidget {
   const LaundryCategory({super.key});
@@ -17,10 +22,14 @@ class LaundryCategory extends StatelessWidget {
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 40.w),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 60.w,
-            color: Colors.black,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchInfo()),
+              );
+            },
+            child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
           ),
         ),
         title: Text(
@@ -34,7 +43,15 @@ class LaundryCategory extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 40.w),
-            child: Icon(Icons.person, size: 80.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -99,9 +116,9 @@ class LaundryCategory extends StatelessWidget {
 
                   SizedBox(height: 404.h),
 
-                  _categoryButton("얼룩 제거"),
+                  _categoryButton("얼룩 제거", context, const RemoveCategory()),
                   SizedBox(height: 237.h),
-                  _categoryButton("냄새 제거"),
+                  _categoryButton("냄새 제거", context, const SmellCategory()),
                   SizedBox(height: 843.h),
                 ],
               ),
@@ -130,8 +147,14 @@ class LaundryCategory extends StatelessWidget {
     );
   }
 
-  Widget _categoryButton(String title) {
-    return Container(
+  Widget _categoryButton(String title, BuildContext context, Widget page) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },child: Container(
       width: double.infinity,
       height: 120.h,
       alignment: Alignment.center,
@@ -155,6 +178,7 @@ class LaundryCategory extends StatelessWidget {
           color: Color(0xFF939393),
         ),
       ),
+    )
     );
   }
 }

@@ -1,6 +1,10 @@
+import 'package:design_thinking/features/main/home_main.dart';
+import 'package:design_thinking/features/pollution/analysis_loading.dart';
+import 'package:design_thinking/features/pollution/analysis_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:design_thinking/features/level/level_page.dart';
 import 'dart:io';
 
 class AnalysisPage extends StatefulWidget {
@@ -38,7 +42,15 @@ class _AnalysisPageState extends State<AnalysisPage> {
         leading: Row(
           children: [
             SizedBox(width: 10.w),
-            Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeMainPage()),
+                );
+              },
+              child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+            ),
             SizedBox(width: 10.w),
           ],
         ),
@@ -53,7 +65,15 @@ class _AnalysisPageState extends State<AnalysisPage> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
-            child: Icon(Icons.person, size: 60.w, color: Colors.black87),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LevelPage()),
+                  );
+                },
+                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+            ),
           ),
         ],
       ),
@@ -131,7 +151,14 @@ class _AnalysisPageState extends State<AnalysisPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoadingPage()),
+                      );
+                    },
+                  child: Container(
                     width: 300.w,
                     height: 150.h,
                     alignment: Alignment.center,
@@ -139,13 +166,14 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       border: Border.all(color: Color(0xFF939393), width: 1),
                       borderRadius: BorderRadius.circular(30.r),
                     ),
-                    child: Text(
+                      child: Text(
                       "분석",
                       style: TextStyle(
                         fontSize: 36.w,
                         fontWeight: FontWeight.w400,
                         color: Color(0xFF939393),
-                      ),
+                        ),
+                      )
                     ),
                   ),
                 ],
