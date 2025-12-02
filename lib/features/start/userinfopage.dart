@@ -67,7 +67,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
         title: Text(
           "어서오세요!",
           style: TextStyle(
-            fontSize: 28,
+            fontSize: 72.sp,
             fontWeight: FontWeight.w700,
             color: Colors.black,
           ),
@@ -125,7 +125,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const PreferencePage()),
+                      MaterialPageRoute(
+                        builder: (context) => const PreferencePage(),
+                      ),
                     );
                   },
                   child: Container(
@@ -164,15 +166,17 @@ class _UserInfoPageState extends State<UserInfoPage> {
     );
   }
 
-  Widget _sectionTitle(String text) =>
-      Text(text, style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700));
+  Widget _sectionTitle(String text) => Text(
+    text,
+    style: TextStyle(fontSize: 42.sp, fontWeight: FontWeight.w600),
+  );
 
   Widget _toggleButton(String text) {
     bool selected = selectedPeople == text;
     return GestureDetector(
       onTap: () => setState(() => selectedPeople = text),
       child: Container(
-        height: 50.h,
+        height: 80.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),
@@ -198,8 +202,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
       child: Row(
         children: [
           Container(
-            width: 26.w,
-            height: 26.w,
+            width: 66.w,
+            height: 66.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.r),
               border: Border.all(
@@ -207,7 +211,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                     selectedPattern == value
                         ? const Color(0xFF0088FF)
                         : const Color(0xFFBBBBBB),
-                width: 2,
+                width: 3.w,
               ),
               color:
                   selectedPattern == value
@@ -216,7 +220,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
           ),
           SizedBox(width: 10.w),
-          Expanded(child: Text(text, style: TextStyle(fontSize: 18))),
+          Expanded(child: Text(text, style: TextStyle(fontSize: 42.sp))),
         ],
       ),
     );
@@ -380,8 +384,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
       child: Row(
         children: [
           Container(
-            width: 26.w,
-            height: 26.w,
+            width: 66.w,
+            height: 66.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.r),
               border: Border.all(
@@ -389,14 +393,14 @@ class _UserInfoPageState extends State<UserInfoPage> {
                     roomChecks[title]!
                         ? const Color(0xFF0088FF)
                         : const Color(0xFFBBBBBB),
-                width: 2,
+                width: 3.w,
               ),
               color:
                   roomChecks[title]! ? const Color(0xFF0088FF) : Colors.white,
             ),
           ),
-          SizedBox(width: 8.w),
-          Text(title, style: TextStyle(fontSize: 18)),
+          SizedBox(width: 27.w),
+          Text(title, style: TextStyle(fontSize: 42.sp)),
         ],
       ),
     );
@@ -405,7 +409,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
   Widget _dropdownOnly(String key, List<String> items) {
     return Container(
       width: 90.w,
-      height: 38.h,
+      height: 80.h,
       padding: EdgeInsets.symmetric(horizontal: 6.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
@@ -444,8 +448,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    width: 26.w,
-                    height: 26.w,
+                    width: 66.w,
+                    height: 66.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.r),
                       border: Border.all(
@@ -453,7 +457,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                             roomChecks[e]!
                                 ? const Color(0xFF0088FF)
                                 : const Color(0xFFBBBBBB),
-                        width: 2,
+                        width: 3.w,
                       ),
                       color:
                           roomChecks[e]!
@@ -461,8 +465,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
                               : Colors.white,
                     ),
                   ),
-                  SizedBox(width: 6.w),
-                  Text(e, style: TextStyle(fontSize: 18)),
+                  SizedBox(width: 18.w),
+                  Text(e, style: TextStyle(fontSize: 42.sp)),
                 ],
               ),
             );

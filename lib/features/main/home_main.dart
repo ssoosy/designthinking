@@ -30,7 +30,7 @@ class HomeMainPage extends StatelessWidget {
         title: Text(
           "메인 화면",
           style: TextStyle(
-            fontSize: 42.w,
+            fontSize: 54.w,
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
@@ -58,15 +58,12 @@ class HomeMainPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 40.w),
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(40.w),
+                padding: EdgeInsets.all(40),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25.r),
                   boxShadow: [
-                    BoxShadow(
-                      blurRadius: 10,
-                      color: Colors.grey.withOpacity(0.2),
-                    ),
+                    BoxShadow(blurRadius: 10, color: Color(0x3F000000)),
                   ],
                 ),
                 child: Column(
@@ -101,7 +98,7 @@ class HomeMainPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 80.h,
+                  top: 114.h,
                   left: 50.w,
                   child: _menuButton(
                     title: "공간 검색",
@@ -113,7 +110,7 @@ class HomeMainPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 80.h,
+                  top: 114.h,
                   right: 50.w,
                   child: _menuButton(
                     title: "분석",
@@ -125,7 +122,7 @@ class HomeMainPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 10.h,
+                  top: 564.h,
                   left: 50.w,
                   child: _menuButton(
                     title: "스케줄",
@@ -156,14 +153,11 @@ class HomeMainPage extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
       child: Container(
         width: 330.w,
-        height: 400.h,
+        height: 330.h,
         decoration: BoxDecoration(
           color: color.withOpacity(0.35),
           borderRadius: BorderRadius.circular(15),
