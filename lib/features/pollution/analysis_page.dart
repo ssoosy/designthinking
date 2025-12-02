@@ -49,7 +49,11 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   MaterialPageRoute(builder: (context) => const HomeMainPage()),
                 );
               },
-              child: Icon(Icons.arrow_back_ios_new, size: 46.w, color: Colors.black),
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: 46.w,
+                color: Colors.black,
+              ),
             ),
             SizedBox(width: 10.w),
           ],
@@ -66,13 +70,13 @@ class _AnalysisPageState extends State<AnalysisPage> {
           Padding(
             padding: EdgeInsets.only(right: 20.w),
             child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LevelPage()),
-                  );
-                },
-                child: Icon(Icons.person, size: 80.w, color: Colors.black87)
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LevelPage()),
+                );
+              },
+              child: Icon(Icons.person, size: 80.w, color: Colors.black87),
             ),
           ),
         ],
@@ -155,25 +159,27 @@ class _AnalysisPageState extends State<AnalysisPage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const LoadingPage()),
+                        MaterialPageRoute(
+                          builder: (context) => const LoadingPage(),
+                        ),
                       );
                     },
-                  child: Container(
-                    width: 300.w,
-                    height: 150.h,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF939393), width: 1),
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
+                    child: Container(
+                      width: 300.w,
+                      height: 150.h,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xFF939393), width: 1),
+                        borderRadius: BorderRadius.circular(30.r),
+                      ),
                       child: Text(
-                      "분석",
-                      style: TextStyle(
-                        fontSize: 36.w,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF939393),
+                        "분석",
+                        style: TextStyle(
+                          fontSize: 36.w,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF939393),
                         ),
-                      )
+                      ),
                     ),
                   ),
                 ],

@@ -112,35 +112,23 @@ class _LoadingPageState extends State<LoadingPage> {
                       width: 3,
                     ),
                   ),
-                  child:
-                      _selectedImage == null
-                          ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.upload,
-                                size: 80.w,
-                                color: Colors.grey,
-                              ),
-                              SizedBox(height: 20.h),
-                              Text(
-                                "사진을 업로드해주세요",
-                                style: TextStyle(
-                                  fontSize: 32.w,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          )
-                          : ClipRRect(
-                            borderRadius: BorderRadius.circular(30.r),
-                            child: Image.file(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30.r),
+                    child:
+                        _selectedImage != null
+                            ? Image.file(
                               _selectedImage!,
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.cover,
+                            )
+                            : Image.asset(
+                              "assets/images/kimchi.png",
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.cover,
                             ),
-                          ),
+                  ),
                 ),
               ),
 
