@@ -35,7 +35,7 @@ class _PreferencePageState extends State<PreferencePage> {
     "기타 (러그, 커튼 등)": "연 4회",
   };
 
-// 3. [NEW] 드롭다운에 들어갈 선택지 목록
+  // 3. [NEW] 드롭다운에 들어갈 선택지 목록
   final List<String> frequencyOptions = [
     "매일",
     "주 3회",
@@ -51,7 +51,8 @@ class _PreferencePageState extends State<PreferencePage> {
   Widget _buildCleaningRow(String title, String selected) {
     bool isChecked = cleanChecks[title] ?? false;
 
-    Color borderColor = isChecked ? const Color(0xFF0088FF) : const Color(0xFFD9D9D9);
+    Color borderColor =
+        isChecked ? const Color(0xFF0088FF) : const Color(0xFFD9D9D9);
     Color boxColor = isChecked ? Colors.white : const Color(0xFFF5F5F5);
 
     return Row(
@@ -62,23 +63,35 @@ class _PreferencePageState extends State<PreferencePage> {
           child: Row(
             children: [
               Container(
-                width: 50.w, height: 80.h,
+                width: 66.w,
+                height: 66.h,
                 decoration: ShapeDecoration(
-                  color: isChecked ? const Color(0xFF0088FF) : Colors.transparent,
+                  color:
+                      isChecked ? const Color(0xFF0088FF) : Colors.transparent,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 3, color: isChecked ? const Color(0xFF0088FF) : const Color(0xFFBBBBBB)),
+                    side: BorderSide(
+                      width: 3.w,
+                      color:
+                          isChecked
+                              ? const Color(0xFF0088FF)
+                              : const Color(0xFFBBBBBB),
+                    ),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),
               SizedBox(width: 32.w),
-              Text(title, style: TextStyle(color: Colors.black, fontSize: 39.w)),
+              Text(
+                title,
+                style: TextStyle(color: Colors.black, fontSize: 39.w),
+              ),
             ],
           ),
         ),
 
         Container(
-          width: 350.w, height: 80.h,
+          width: 350.w,
+          height: 80.h,
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           decoration: ShapeDecoration(
             color: boxColor,
@@ -90,37 +103,54 @@ class _PreferencePageState extends State<PreferencePage> {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: cleaningFrequency[title],
-              icon: Icon(Icons.keyboard_arrow_down_rounded, size: 45.w, color: isChecked ? const Color(0xFF0088FF) : const Color(0xFFB3B3B3)),
+              icon: Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 45.w,
+                color:
+                    isChecked
+                        ? const Color(0xFF0088FF)
+                        : const Color(0xFFB3B3B3),
+              ),
               isExpanded: true,
 
-              items: frequencyOptions.map<DropdownMenuItem<String>>((String option) {
+              items:
+                  frequencyOptions.map<DropdownMenuItem<String>>((
+                    String option,
+                  ) {
+                    bool isRecommended = (option == selected);
 
-                bool isRecommended = (option == selected);
+                    return DropdownMenuItem<String>(
+                      value: option,
+                      child: Text(
+                        isRecommended ? "$option (추천)" : option,
+                        style: TextStyle(
+                          color:
+                              isChecked
+                                  ? (isRecommended
+                                      ? const Color(0xFF0088FF)
+                                      : Colors.black)
+                                  : const Color(0xFFB3B3B3),
+                          fontWeight:
+                              isRecommended ? FontWeight.bold : FontWeight.w400,
+                          fontSize: 36.w,
+                        ),
+                      ),
+                    );
+                  }).toList(),
 
-                return DropdownMenuItem<String>(
-                  value: option,
-                  child: Text(
-                    isRecommended ? "$option (추천)" : option,
-                    style: TextStyle(
-                      color: isChecked
-                          ? (isRecommended ? const Color(0xFF0088FF) : Colors.black)
-                          : const Color(0xFFB3B3B3),
-                      fontWeight: isRecommended ? FontWeight.bold : FontWeight.w400,
-                      fontSize: 36.w,
-                    ),
-                  ),
-                );
-              }).toList(),
-
-              onChanged: isChecked
-                  ? (val) => setState(() => cleaningFrequency[title] = val!)
-                  : null,
+              onChanged:
+                  isChecked
+                      ? (val) => setState(() => cleaningFrequency[title] = val!)
+                      : null,
 
               disabledHint: Text(
                 cleaningFrequency[title] == selected
                     ? "${cleaningFrequency[title]} (추천)"
                     : cleaningFrequency[title]!,
-                style: TextStyle(color: const Color(0xFFB3B3B3), fontSize: 36.w),
+                style: TextStyle(
+                  color: const Color(0xFFB3B3B3),
+                  fontSize: 36.w,
+                ),
               ),
             ),
           ),
@@ -152,19 +182,13 @@ class _PreferencePageState extends State<PreferencePage> {
                 ),
                 child: Column(
                   children: [
-                    _optionRow(
-                        "daily",
-                        '매일 조금씩: “매일 15분씩 구역을 나눠서 할래요”'
-                    ),
+                    _optionRow("daily", '매일 조금씩: “매일 15분씩 구역을 나눠서 할래요”'),
 
                     SizedBox(height: 20.h), // 간격
 
-                    _optionRow(
-                        "weekend",
-                        '주말에 몰아서: “평일엔 바쁘니 주말에 한 번에 할래요”'
-                    ),
+                    _optionRow("weekend", '주말에 몰아서: “평일엔 바쁘니 주말에 한 번에 할래요”'),
                   ],
-                )
+                ),
               ),
 
               SizedBox(height: 80.h),
@@ -226,7 +250,9 @@ class _PreferencePageState extends State<PreferencePage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomeMainPage()),
+                        MaterialPageRoute(
+                          builder: (context) => const HomeMainPage(),
+                        ),
                       );
                     },
                     child: Container(
@@ -243,15 +269,15 @@ class _PreferencePageState extends State<PreferencePage> {
                         ),
                       ),
                       child: Center(
-                          child: Text(
-                            "완료",
-                            style: TextStyle(
-                              color: const Color(0xFF0088FF),
-                              fontSize: 20,
-                              fontFamily: 'Segoe UI',
-                              fontWeight: FontWeight.w400,
-                            ),
+                        child: Text(
+                          "완료",
+                          style: TextStyle(
+                            color: const Color(0xFF0088FF),
+                            fontSize: 20,
+                            fontFamily: 'Segoe UI',
+                            fontWeight: FontWeight.w400,
                           ),
+                        ),
                       ),
                     ),
                   ),
@@ -276,14 +302,17 @@ class _PreferencePageState extends State<PreferencePage> {
       child: Row(
         children: [
           Container(
-            width: 50.w,
-            height: 80.h,
+            width: 66.w,
+            height: 66.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: isSelected ? const Color(0xFF0088FF) : Colors.transparent,
               border: Border.all(
-                width: 3,
-                color: isSelected ? const Color(0xFF0088FF) : const Color(0xFFBBBBBB),
+                width: 3.w,
+                color:
+                    isSelected
+                        ? const Color(0xFF0088FF)
+                        : const Color(0xFFBBBBBB),
               ),
             ),
           ),
@@ -292,7 +321,7 @@ class _PreferencePageState extends State<PreferencePage> {
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 36.w,
+                fontSize: 42.w,
                 color: isSelected ? Colors.black : const Color(0xFF939393),
               ),
             ),
